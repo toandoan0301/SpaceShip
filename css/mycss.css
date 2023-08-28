@@ -1,0 +1,12 @@
+canvas{
+    border: 3px solid black;
+}
+div{
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+}
+body{
+    background: url("../img/background.jpg");
+    background-size: cover;
+}
