@@ -2,18 +2,19 @@ class Bullets{
     isPlayer;
     x;
     y;
-    type;
+    img;
     speed;
-    status;
-    constructor(isP,x,y,type) {
+    dame;
+    constructor(isP,x,y,img,dame) {
         this.isPlayer=isP;
         this.x = x;
         this.y = y;
-        this.type=type;
+        this.img=img;
         this.speed = 4;
+        this.dame=dame;
     }
     draw(){
-        ctx.drawImage(this.type.img,this.x,this.y,33,58);
+        ctx.drawImage(this.img,this.x,this.y,15,27);
     }
     move(){
         if(this.isPlayer){

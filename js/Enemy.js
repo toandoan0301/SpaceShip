@@ -7,17 +7,19 @@ class Enemy{
     hp;
     move_x;
     move_y;
-    constructor(img,x,y,type) {
+    point;
+    constructor(img,x,y,type,point) {
         this.img=img;
         this.x=x;
         this.y=y;
         this.typeBullet=type;
-        this.size= 70;
+        this.size= 50;
         this.move_x=3;
         this.move_y=1;
-        this.hp=50;
+        this.hp=point;
+        this.point=point;
     }
     draw(){
-        ctx.drawImage(this.img,this.x,this.y,this.size,this.size)
+        ctx.drawImage(this.img,this.x,this.y,this.size+20,this.size)
     }
 }

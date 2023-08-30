@@ -4,22 +4,60 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/mycss.css">
-    <style>
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 </head>
 <body>
-<div>
-    <canvas id="game-board">
 
+<div class="main">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2 class="title">Spaceship War</h2>
+            <label for="name" class="name">Player Name</label><br>
+            <input id="name" class="name" type="text" placeholder="...nickname...">
+            <br>
+            <button onclick="newGame()">Play</button>
+        </div>
+
+    </div>
+    <canvas id="game-board" width="1300" height="630">
     </canvas>
+    <div id="myModalEnd" style="display: none" class="modal">
+        <div class="modal-content">
+            <div  class="col1">
+                <h2 class="title">Spaceship War</h2>
+                <div id="player-info">
+                </div>
+                <button style="width: 200px" onclick="showMenu()">Play Again</button>
+            </div>
+            <div class="col2">
+                <h3>Highest Score</h3>
+                <table >
+                    <tr>
+                        <th style="width: 80px">Top</th>
+                        <th style="width: 300px">Player Name</th>
+                        <th>Score</th>
+                    </tr>
+                    <tbody id="leader_board">
+
+                    </tbody>
+
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
 </div>
 <img id="player" hidden src="img/Ship/playerShip.png" alt="player">
 <img id="ship_1" hidden src="img/Ship/ship1.png" alt="player">
 <img id="ship_2" hidden src="img/Ship/ship2.png" alt="player">
 <img id="player-bullets" hidden src="img/bullets/playerBullets.png" alt="">
-<img id="bullets_1" hidden src="img/bullets/11.png" alt="">
+<img id="bullets_1" hidden src="img/bullets/1.png" alt="">
+<img id="bullets_2" hidden src="img/bullets/2.png" alt="">
 
 <script src="js/Player.js"></script>
 <script src="js/Bullets.js"></script>

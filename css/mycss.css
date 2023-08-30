@@ -1,12 +1,99 @@
-canvas{
-    border: 3px solid black;
+canvas {
+    background-color: rgb(0, 0, 0, 20%);
+    border-radius: 10px;
+    display: none;
 }
-div{
+
+div {
     margin: auto;
     text-align: center;
-    margin-top: 30px;
 }
-body{
-    background: url("../img/background.jpg");
+
+body {
+    background: url("../img/bg1.jpg");
     background-size: cover;
+}
+
+.modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+}
+
+/* Modal Content */
+.modal-content {
+    background: url("../img/background.png");
+    background-size: cover;
+    border-radius: 20px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    font-family: 'Black Ops One', cursive;
+    height: 60%;
+    display: table;
+}
+
+.title {
+    font-size: 40px;
+    color: white;
+    text-shadow: 1px 2px aqua;
+}
+
+.name {
+    font-size: 28px;
+    text-shadow: 1px 2px aqua;
+}
+
+.modal-content button {
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    font-size: 30px;
+    font-family: 'Black Ops One', cursive;
+    border-radius: 10px;
+    text-shadow: 1px 2px aqua;
+}
+
+.modal-content input {
+    margin: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 30px;
+    font-family: 'Black Ops One', cursive;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content .col1 {
+    display: table-cell;
+    width: 50%;
+    margin: 10px;
+    font-size: 30px;
+    color: mediumblue;
+    font-family: 'Black Ops One', cursive;
+    border-radius: 10px;
+    text-shadow: 1px 2px aqua;
+    text-align: center;
+}
+
+.modal-content .col2 {
+    display: table-cell;
+    margin: 10px;
+    width: 50%;
+    font-size: 30px;
+    color: red;
+    font-family: 'Black Ops One', cursive;
+    border-radius: 10px;
+    text-shadow: 1px 2px aqua;
+    text-align: center;
 }

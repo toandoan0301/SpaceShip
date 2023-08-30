@@ -11,8 +11,8 @@ class Player{
         this.name=name;
         this.img=img;
         this.size=size;
-        this.speed=5;
-        this.hp=100;
+        this.speed=10;
+        this.hp=1000;
         this.score=0;
         this.x=canvas.width/2;
         this.y=canvas.height-this.size;
