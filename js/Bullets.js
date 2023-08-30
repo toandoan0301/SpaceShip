@@ -14,7 +14,7 @@ class Bullets{
         this.dame=dame;
     }
     draw(){
-        ctx.drawImage(this.img,this.x,this.y,15,27);
+        ctx.drawImage(this.img,this.x,this.y,33,55);
     }
     move(){
         if(this.isPlayer){

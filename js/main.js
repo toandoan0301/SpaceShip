@@ -15,8 +15,8 @@ let isAttack = false;
 let isOver = false;
 let isWin = false;
 let lv = 0;
-let enemyAttackTimes = 2000;
-let playerAttSpeed = 100;
+let enemyAttackTimes = 1000;
+let playerAttSpeed = 150;
 
 
 const imgPlayer = document.getElementById("player");
@@ -68,9 +68,9 @@ let enemies = [];
 let imgShip = []
 let bullets = [];
 let typeBullets = [];
-let playerBullet = new TypeBullets('player', 100, imgBullet)
-let bul_1 = new TypeBullets('T1', 100, imgBullet_1)
-let bul_2 = new TypeBullets('T2', 150, imgBullet_2)
+let playerBullet = new TypeBullets('player', 200, imgBullet)
+let bul_1 = new TypeBullets('T1', 200, imgBullet_1)
+let bul_2 = new TypeBullets('T2', 300, imgBullet_2)
 imgShip.push(imgShip1);
 imgShip.push(imgShip2)
 
@@ -166,9 +166,9 @@ function drawBullets() {
         if (!b.isPlayer) {
             if (b.x > player.x + 5 && b.x < player.x + player.size - 5 && b.y > player.y + 10 && b.y < player.y + player.size) {
                 bullets.splice(i, 1);
-                player.hp-=b.dame;
-                if(player.hp<0){
-                    isOver=true;
+                player.hp -= b.dame;
+                if (player.hp <= 0) {
+                    isOver = true;
                 }
             }
         } else {
@@ -192,11 +192,11 @@ function drawBullets() {
 
 function generatingEnemies() {
     enemies = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 10; i++) {
         let x = Math.ceil((canvas.width - 100) * Math.random());
         let y = Math.ceil(canvas.height / 2 * Math.random());
         let i = Math.floor(2 * Math.random());
-        let enemy = new Enemy(imgShip[i], x, y, typeBullets[i], typeBullets[i].dame * 2);
+        let enemy = new Enemy(imgShip[i], x, y, typeBullets[i], typeBullets[i].dame * 4);
         enemies.push(enemy);
     }
 }
@@ -207,6 +207,13 @@ function drawEnemies() {
         e.draw();
         e.x += e.move_x;
         e.y += e.move_y;
+        if (e.x > player.x && e.x + e.size < player.x + player.size && e.y > player.y && e.y + e.size < player.y + player.size) {
+            player.hp -= 500;
+            enemies.splice(i, 1)
+            if (player.hp <= 0) {
+                isOver = true;
+            }
+        }
         if (e.y + e.size > canvas.height - 200 || e.y < 0) {
             e.move_y = -e.move_y;
         }
@@ -230,8 +237,8 @@ function enemiesAttack() {
     let i = Math.floor(Math.random() * enemies.length);
     let bullet = new Bullets(false, enemies[i].x + 15, enemies[i].y + 35, enemies[i].typeBullet.img, enemies[i].typeBullet.dame);
     bullets.push(bullet);
-    // setTimeout(enemiesAttack, enemyAttackTimes - (enemies.length * 180))
-    setTimeout(enemiesAttack, 100)
+    setTimeout(enemiesAttack, enemyAttackTimes - (enemies.length * 90))
+    // setTimeout(enemiesAttack, 100)
 }
 
 function showScore() {
@@ -261,11 +268,11 @@ function endGame() {
             localStorage.setItem('Score_board', JSON.stringify(score_board));
         }
     }
-    let str='';
-    if(isOver){
-        str='Game Over!';
-    }else {
-        str='Victorious'
+    let str = '';
+    if (isOver) {
+        str = 'Game Over!';
+    } else {
+        str = 'Victorious'
     }
     document.getElementById('player-info').innerHTML = `
         <h3>${str} </h3>
@@ -305,13 +312,14 @@ function compare(a, b) {
     }
     return compare;
 }
-function showHP(){
+
+function showHP() {
     ctx.beginPath();
     ctx.font = ("30px 'Black Ops One', cursive");
     ctx.fillStyle = "green";
     ctx.textAlign = "left";
-    ctx.fillText(player.name, 40 ,canvas.height-50);
-    ctx.fillText(player.hp, 40 ,canvas.height-20);
+    ctx.fillText("HP", 40, canvas.height - 50);
+    ctx.fillText(player.hp, 40, canvas.height - 20);
     ctx.closePath();
 }
 
